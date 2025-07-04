@@ -22,15 +22,15 @@ def main():
     # setup methods to call
     kernel = KernelWrapper(_kernel)
     oasis_kernel = KernelWrapper(_kernel, offset=1)
-    funcs = (dmd, kdmd, pivchol_kdmd, rff_kdmd, oasis_kdmd)
+    funcs = (dmd, kdmd, rff_kdmd, oasis_kdmd, pivchol_kdmd)
     func_args = (
         {},
         {"kernel": kernel, "return_modes": True},
-        {"kernel": kernel, "return_modes": True},
         {"kernel": ("normal", (), {"scale": 1 / 10}), "return_modes": True},
         {"kernel": oasis_kernel, "return_modes": True},
+        {"kernel": kernel, "return_modes": True},
     )
-    func_names = ("DMD", "KDMD", "RP_Cholesky", "RFF", "oASIS")
+    func_names = ("DMD", "KDMD", "RFF", "oASIS", "Algorithm 2")
 
     # run experiments
     n_modes = 3
